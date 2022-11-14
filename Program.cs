@@ -82,5 +82,29 @@ internal class Program
 		Console.WriteLine("Actors count = " + actorList.Count);
 		Console.ReadLine();
 
+		// Show only the wealthiest actors
+		// First example uses the standard loop not LINQ
+		List<Actor> richActors = new List<Actor>();
+		foreach (var item in actorList)
+		{
+			if (item.TotalGross > 4000)
+			{
+				richActors.Add(item);
+			}
+		}
+
+		Console.WriteLine("Rich actors that earned more than $400 million");
+		Console.WriteLine(printList(richActors));
+		Console.ReadLine();
     }
+
+
+	private static bool printList(List<Actor> richActors)
+	{
+		foreach (var item in richActors)
+		{
+			Console.WriteLine(item);
+		}
+		return true;
+	}
 }
