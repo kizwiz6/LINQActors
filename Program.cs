@@ -96,10 +96,19 @@ internal class Program
 		Console.WriteLine("Rich actors that earned more than $400 million");
 		Console.WriteLine(printList(richActors));
 		Console.ReadLine();
+
+		// Now use LINQ for the same results
+		var richActors2 = from actor in actorList
+						  where actor.TotalGross > 4000
+						  select actor;
+
+        Console.WriteLine("Rich actors that earned more than $400 million");
+        Console.WriteLine(printList(richActors2));
+        Console.ReadLine();
     }
 
 
-	private static bool printList(List<Actor> richActors)
+	private static bool printList(IEnumerable<Actor> richActors)
 	{
 		foreach (var item in richActors)
 		{
